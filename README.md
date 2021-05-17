@@ -1,52 +1,78 @@
-# reddit-memes README
+# Reddit Memes!
 
-This is the README for your extension "reddit-memes". After writing up a brief description, we recommend including the following sections.
+Do you also get bored when working on VS Code all day long but don't feel like leaving the window? Reddit Memes got you covered my friend!
+
+Witness quality Reddit memes right in your VS Code editor! And the best part? It only uses the side bar! So you coding will be uninterrupted but your meme knowlege will go to the moon 🚀🚀 !
+
+## Tech Stack:
+
+- Typescript
+- Svelte
+- JavaScript
+- VS Code
+- [Reddit Memes API](https://github.com/D3vd/Meme_Api) 
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Explore latest reddit memes from top subredits right in you VScode sidebar.
+- Refresh the meme with just a click of a button!
 
-For example if there is an image subfolder under your extension project workspace:
 
-\!\[feature X\]\(images/feature-x.png\)
+![feature sidebar](github_media/feature_preview.png)
 
 > Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- VSCode Editor.
+- An active internet connection.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+- To active the extension simply press the icon from the sidebar after installation.
+- To turn it off, simply switch the tab or close the side bar entirely.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Sometimes memes take a while to load as it depends on your internet connection.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+The jounrey of Reddit Memes Extension so far:
 
 ### 1.0.0
 
-Initial release of ...
+- Able to render a single meme from reddit and change it on click of a button.
 
-### 1.0.1
 
-Fixed issue #.
+## Contribution:
 
-### 1.1.0
+ If you like to contribute to this project follow the steps below: 
+ - Make a fork of the github repository and clone it using the following command:
 
-Added features X, Y, and Z.
+    `git clone https://github.com/version0chiro/VS-Meme-Reddit.git
+    `
+- Go into the cloned repository directory:
 
+    `cd VS-Meme-Reddit
+    `
+- Run npm install to install all the dev/prod dependencies 
+
+    `npm i
+    `
+
+- For any pull request, make a new branch and submit for easy code review.
+
+- For running the code use 'F5' key on your keyboard and it will run a new VSCode window with the extension running.
+
+- For compiling svelte code run the following command from cmd
+
+    `npm rum watch
+    `
+
+- After making all the changes submit your PR!
+
+- Welcome to the ship!
 -----------------------------------------------------------------------------------------------------------
 ## Following extension guidelines
 
@@ -54,17 +80,5 @@ Ensure that you've read through the extensions guidelines and follow the best pr
 
 * [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
 
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**
