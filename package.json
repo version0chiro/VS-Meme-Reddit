@@ -1,8 +1,13 @@
 {
   "name": "reddit-memes",
+  "publisher": "sachinsinghroxx",
   "displayName": "reddit-memes",
   "description": "A VS-code extension for reddit memes",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/version0chiro/VS-Meme-Reddit"
+  },
   "engines": {
     "vscode": "^1.56.0"
   },

@@ -20,7 +20,6 @@ Witness quality Reddit memes right in your VS Code editor! And the best part? It
 
 ![feature sidebar](github_media/feature_preview.png)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
 ## Requirements
 
