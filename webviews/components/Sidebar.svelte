@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
 
   let flag = false;
-  let temp:Promise<string> = null;
+  let temp: Promise<string> = null;
   class Meme {
     url: string;
     title: string;
@@ -38,13 +38,16 @@
   {:then data}
     <p>Here it is!</p>
     {#if flag}
-      <img src={temp.url} alt="Meme" />
+      <a href={temp.url}>
+        <img src={temp.url} alt="Meme" />
+      </a>
       <h3>{temp.title}</h3>
     {:else}
-      <img src={data.url} alt="Meme" />
+      <a href={data.url}>
+        <img src={data.url} alt="Meme" />
+      </a>
       <h3>{data.title}</h3>
     {/if}
-
   {:catch}
     <p class="para">Something went wrong!</p>
   {/await}
@@ -57,8 +60,13 @@
       temp = memes;
       flag = true;
       // console.log(temp);
-    })}>foo</button
+    })}>Bring me another one! 🍻</button
 >
+<a href="https://github.com/version0chiro/VS-Meme-Reddit">
+  <div class="footer">
+    <footer>If you like the project please consider ⭐staring the repo!</footer>
+  </div>
+</a>
 
 <!-- svelte-ignore missing-declaration -->
 <style>
@@ -74,17 +82,25 @@
       U+2215, U+FEFF, U+FFFD;
   }
   div {
-    padding:10px;
+    padding: 10px;
     text-align: center;
   }
-  img{
-    border:1px solid;
-    border-color: aquamarine;
-    width:200%;
-    height:200%;
+  .footer {
+    position: absolute;
+    padding: 10px;
+    text-align: center;
+    bottom: 10px;
+    /* width: 50%; */
+    border: 3px solid #c15111;
   }
-  p{
-    margin:10px;
+  img {
+    border: 1px solid;
+    border-color: aquamarine;
+    width: 200%;
+    height: 200%;
+  }
+  p {
+    margin: 10px;
   }
 
   h3 {
