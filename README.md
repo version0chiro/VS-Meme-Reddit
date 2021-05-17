@@ -4,6 +4,8 @@ Do you also get bored when working on VS Code all day long but don't feel like l
 
 Witness quality Reddit memes right in your VS Code editor! And the best part? It only uses the side bar! So you coding will be uninterrupted but your meme knowlege will go to the moon 🚀🚀 !
 
+You can download the extension following this link here: [here](https://marketplace.visualstudio.com/items?itemName=sachinsinghroxx.reddit-memes)
+
 ## Tech Stack:
 
 - Typescript
