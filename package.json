@@ -3,7 +3,7 @@
   "publisher": "sachinsinghroxx",
   "displayName": "reddit-memes",
   "description": "A VS-code extension for reddit memes",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/version0chiro/VS-Meme-Reddit"
@@ -57,7 +57,7 @@
     "vscode:prepublish": "npm run package",
     "compile": "concurrently \"rollup -c -w\" \" webpack \"",
     "watch": "concurrently \"rollup -c -w\" \" webpack --watch\"",
-    "package": "concurrently \"rollup -c -w\" \" webpack --mode production --devtool hidden-source-map\"",
+    "package": "concurrently \"rollup -c \" \" webpack --mode production --devtool hidden-source-map\"",
     "test-compile": "tsc -p ./",
     "test-watch": "tsc -watch -p ./",
     "pretest": "npm run test-compile && npm run lint",
