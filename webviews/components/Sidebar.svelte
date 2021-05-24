@@ -96,7 +96,7 @@
     border: 1px solid;
     border-color: aquamarine;
     width: 200%;
-    max-height: 80vh;
+    max-height: 90vh;
   }
   p {
     margin: 10px;
