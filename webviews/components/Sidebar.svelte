@@ -32,7 +32,7 @@
   $: memeFetch = fetchImage;
 </script>
 
-<div>
+<div class="container">
   {#await memeFetch()}
     <p>Getting you top quality Meme!</p>
   {:then data}
@@ -51,22 +51,20 @@
   {:catch}
     <p class="para">Something went wrong!</p>
   {/await}
-</div>
 
-<button
-  on:click={() =>
-    apiClient.getMemes().then((memes) => {
-      console.log(memes.url);
-      temp = memes;
-      flag = true;
-      // console.log(temp);
-    })}>Bring me another one! 🍻</button
->
-<a href="https://github.com/version0chiro/VS-Meme-Reddit">
-  <div class="footer">
+  <button
+    on:click={() =>
+      apiClient.getMemes().then((memes) => {
+        console.log(memes.url);
+        temp = memes;
+        flag = true;
+        // console.log(temp);
+      })}>Bring me another one! 🍻</button
+  >
+  <a href="https://github.com/version0chiro/VS-Meme-Reddit">
     <footer>If you like the project please consider ⭐staring the repo!</footer>
-  </div>
-</a>
+  </a>
+</div>
 
 <!-- svelte-ignore missing-declaration -->
 <style>
@@ -81,23 +79,24 @@
       U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
       U+2215, U+FEFF, U+FFFD;
   }
-  div {
-    padding: 10px;
-    text-align: center;
+  .container {
+    position: relative;
+    height: 100vh;
   }
-  .footer {
+  footer {
     position: absolute;
-    padding: 10px;
-    text-align: center;
     bottom: 10px;
-    /* width: 50%; */
+    padding: var(--input-padding-vertical) var(--input-padding-horizontal);
+    text-align: center;
+    margin-top: 10px;
+    width: 100%;
     border: 3px solid #c15111;
   }
   img {
     border: 1px solid;
     border-color: aquamarine;
     width: 200%;
-    height: 200%;
+    max-height: 80vh;
   }
   p {
     margin: 10px;
@@ -105,5 +104,7 @@
 
   h3 {
     font-family: Gelasio;
+    margin: 10px;
+    text-align: center;
   }
 </style>
