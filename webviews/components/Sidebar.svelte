@@ -2,11 +2,7 @@
   import { onMount } from "svelte";
 
   let flag = false;
-  let imgElement = document.getElementsByTagName("img")[0];
-  let seenMemes = [];
-  if (imgElement) {
-    seenMemes.push(imgElement.src);
-  }
+  let visitedMemes: { url: string; title: string }[] = [];
   let temp: Promise<string> = null;
   class Meme {
     url: string;
@@ -25,6 +21,16 @@
     }
   }
 
+  // two fns to set and get images from localstorage
+  const setImgInStore = (imgData: { url: string; title: string }[]) => {
+    localStorage.setItem("prevImg", JSON.stringify(imgData));
+  };
+
+  const getImgFromStore = () => {
+    const prevImg = localStorage.getItem("prevImg");
+    if (prevImg) return JSON.parse(prevImg);
+  };
+
   let apiClient = new MemeService();
   const fetchImage = async () => {
     const response = await fetch("https://meme-api.herokuapp.com/gimme");
@@ -32,23 +38,52 @@
   };
 
   const handleNextBtnClick = () => {
+    //1. grab existing image details into an object.
+    let imgElement = document.getElementsByTagName("img")[0];
+    let imgTitle = document.getElementsByClassName("img-title")[0];
+
+    let prevImg = { url: "", title: "" };
     if (imgElement) {
-      seenMemes.push(imgElement.src);
+      prevImg.url = imgElement.src;
     }
+    if (imgTitle) {
+      prevImg.title = imgTitle.innerText;
+    }
+
+    visitedMemes.push(prevImg);
+    //2. save that object to the local storage.
+    setImgInStore(visitedMemes);
+
+    //3. get the next img
     apiClient.getMemes().then((memes) => {
       console.log("next btn is clicked");
-      console.log(memes.url);
+      console.log(memes);
       temp = memes;
       flag = true;
     });
   };
 
   const handlePreviousBtnClick = () => {
+    // only allow until the stack is available
+    const prevImgs = getImgFromStore();
+    if (prevImgs.length < 1) return;
+
     console.log("prev btn is clicked");
+
+    // get the first object from array...
+    let prevImg = prevImgs.pop();
+
+    // setback the local storage to modified array
+    setImgInStore(prevImgs);
+
+    // grab the img and h3 tags
     let imgElement = document.getElementsByTagName("img")[0];
+    let imgTitle = document.getElementsByClassName("img-title")[0];
     if (imgElement) {
-      // imgElement.src = storedElement && storedElement.toString();
-      imgElement.src = seenMemes.length > 0 && seenMemes.pop();
+      imgElement.src = prevImg.url;
+    }
+    if (imgTitle) {
+      imgTitle.innerText = prevImg.title;
     }
   };
   $: memeFetch = fetchImage;
@@ -60,10 +95,12 @@
   {:then data}
     <p>Here it is!</p>
     {#if flag}
-      <a href={temp.url}>
-        <img src={temp.url} alt="Meme" id="meme-img" />
-      </a>
-      <h3>{temp.title}</h3>
+      <div class="img-container">
+        <a href={temp.url}>
+          <img src={temp.url} alt="Meme" />
+        </a>
+        <h3 class="img-title">{temp.title}</h3>
+      </div>
     {:else}
       <a href={data.url}>
         <img src={data.url} alt="Meme" />
@@ -75,11 +112,9 @@
   {/await}
   <div class="button-stack">
     <button class="btn previous-btn" on:click={handlePreviousBtnClick}>
-      Bring me last one!
+      &xlarr
     </button>
-    <button class="btn next-btn" on:click={handleNextBtnClick}
-      >Bring me another one! 🍻</button
-    >
+    <button class="btn next-btn" on:click={handleNextBtnClick}>&rarr</button>
   </div>
   <a href="https://github.com/version0chiro/VS-Meme-Reddit">
     <footer>If you like the project please consider ⭐staring the repo!</footer>
@@ -105,7 +140,7 @@
   }
   footer {
     position: absolute;
-    bottom: 0vh;
+    bottom: 1vh;
     padding: var(--input-padding-vertical) var(--input-padding-horizontal);
     text-align: center;
     margin-top: 10px;
@@ -116,7 +151,7 @@
     border: 1px solid;
     border-color: aquamarine;
     width: 200%;
-    max-height: 80vh;
+    max-height: 75vh;
   }
   p {
     margin: 10px;
@@ -132,7 +167,7 @@
     flex-direction: row;
     justify-content: center;
     position: absolute;
-    bottom: 10vh;
+    bottom: 12vh;
     width: 100%;
   }
   .btn {
