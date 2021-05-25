@@ -2,6 +2,11 @@
   import { onMount } from "svelte";
 
   let flag = false;
+  let imgElement = document.getElementsByTagName("img")[0];
+  let seenMemes = [];
+  if (imgElement) {
+    seenMemes.push(imgElement.src);
+  }
   let temp: Promise<string> = null;
   class Meme {
     url: string;
@@ -16,19 +21,36 @@
   class MemeService {
     async getMemes(): Promise<Meme[]> {
       const response = await fetch("https://meme-api.herokuapp.com/gimme");
-
       return await response.json();
     }
   }
 
   let apiClient = new MemeService();
-  // apiClient.getMemes().then((memes) => console.log(memes));
   const fetchImage = async () => {
     const response = await fetch("https://meme-api.herokuapp.com/gimme");
-
     return await response.json();
   };
 
+  const handleNextBtnClick = () => {
+    if (imgElement) {
+      seenMemes.push(imgElement.src);
+    }
+    apiClient.getMemes().then((memes) => {
+      console.log("next btn is clicked");
+      console.log(memes.url);
+      temp = memes;
+      flag = true;
+    });
+  };
+
+  const handlePreviousBtnClick = () => {
+    console.log("prev btn is clicked");
+    let imgElement = document.getElementsByTagName("img")[0];
+    if (imgElement) {
+      // imgElement.src = storedElement && storedElement.toString();
+      imgElement.src = seenMemes.length > 0 && seenMemes.pop();
+    }
+  };
   $: memeFetch = fetchImage;
 </script>
 
@@ -39,7 +61,7 @@
     <p>Here it is!</p>
     {#if flag}
       <a href={temp.url}>
-        <img src={temp.url} alt="Meme" />
+        <img src={temp.url} alt="Meme" id="meme-img" />
       </a>
       <h3>{temp.title}</h3>
     {:else}
@@ -49,18 +71,16 @@
       <h3>{data.title}</h3>
     {/if}
   {:catch}
-    <p class="para">Something went wrong!</p>
+    <p>Something went wrong!</p>
   {/await}
-
-  <button
-    on:click={() =>
-      apiClient.getMemes().then((memes) => {
-        console.log(memes.url);
-        temp = memes;
-        flag = true;
-        // console.log(temp);
-      })}>Bring me another one! 🍻</button
-  >
+  <div class="button-stack">
+    <button class="btn previous-btn" on:click={handlePreviousBtnClick}>
+      Bring me last one!
+    </button>
+    <button class="btn next-btn" on:click={handleNextBtnClick}
+      >Bring me another one! 🍻</button
+    >
+  </div>
   <a href="https://github.com/version0chiro/VS-Meme-Reddit">
     <footer>If you like the project please consider ⭐staring the repo!</footer>
   </a>
@@ -85,7 +105,7 @@
   }
   footer {
     position: absolute;
-    bottom: 10px;
+    bottom: 0vh;
     padding: var(--input-padding-vertical) var(--input-padding-horizontal);
     text-align: center;
     margin-top: 10px;
@@ -96,7 +116,7 @@
     border: 1px solid;
     border-color: aquamarine;
     width: 200%;
-    max-height: 90vh;
+    max-height: 80vh;
   }
   p {
     margin: 10px;
@@ -106,5 +126,32 @@
     font-family: Gelasio;
     margin: 10px;
     text-align: center;
+  }
+  .button-stack {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: absolute;
+    bottom: 10vh;
+    width: 100%;
+  }
+  .btn {
+    flex: 1;
+    border: none;
+    padding: var(--input-padding-vertical) var(--input-padding-horizontal);
+    width: 100%;
+    margin: 5px;
+    text-align: center;
+    color: var(--vscode-button-foreground);
+    background: var(--vscode-button-background);
+    border-radius: 15px;
+    outline: none;
+  }
+
+  .btn:hover {
+    background-color: orange;
+  }
+  .btn:focus {
+    background-color: rgb(255, 106, 0);
   }
 </style>

@@ -44,7 +44,7 @@ code {
 	font-family: var(--vscode-editor-font-family);
 }
 
-button {
+/* button {
 	border: none;
 	padding: var(--input-padding-vertical) var(--input-padding-horizontal);
 	width: 100%;
@@ -53,7 +53,7 @@ button {
 	outline-offset: 2px !important;
 	color: var(--vscode-button-foreground);
 	background: var(--vscode-button-background);
-}
+} */
 
 button:hover {
 	cursor: pointer;
