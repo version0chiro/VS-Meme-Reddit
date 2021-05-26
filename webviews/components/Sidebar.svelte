@@ -8,6 +8,7 @@
     author: string;
     ups: number;
     postLink: string;
+    subreddit: string;
   }[] = [];
   class Meme {
     url: string;
@@ -15,13 +16,22 @@
     author: string;
     ups: number;
     postLink: string;
+    subreddit: string;
 
-    constructor(url: string, title: string, author: string, ups: number, postLink: string) {
+    constructor(
+      url: string,
+      title: string,
+      author: string,
+      ups: number,
+      postLink: string,
+      subreddit: string
+    ) {
       this.url = url;
       this.title = title;
       this.author = author;
       this.ups = ups;
       this.postLink = postLink;
+      this.subreddit = subreddit;
     }
   }
 
@@ -38,7 +48,8 @@
     title: string,
     author: string,
     ups: number,
-    postLink: string
+    postLink: string,
+    subreddit: string,
   }[]) => {
     localStorage.setItem("prevImg", JSON.stringify(imgData));
   };

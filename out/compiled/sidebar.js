@@ -471,69 +471,84 @@ var app = (function () {
     	let section;
     	let p0;
     	let t0;
-    	let span0;
+    	let a0;
     	let strong0;
     	let t1;
     	let t2_value = /*data*/ ctx[0].author + "";
     	let t2;
+    	let a0_href_value;
     	let t3;
-    	let p1;
+    	let a1;
+    	let t4_value = /*data*/ ctx[0].subreddit + "";
     	let t4;
-    	let span1;
-    	let strong1;
-    	let t5_value = /*data*/ ctx[0].ups + "";
+    	let a1_href_value;
     	let t5;
+    	let p1;
     	let t6;
-    	let h3;
-    	let t7_value = /*data*/ ctx[0].title + "";
+    	let span;
+    	let strong1;
+    	let t7_value = /*data*/ ctx[0].ups + "";
     	let t7;
     	let t8;
+    	let h3;
+    	let t9_value = /*data*/ ctx[0].title + "";
+    	let t9;
+    	let t10;
     	let div;
-    	let a;
+    	let a2;
     	let img;
     	let img_src_value;
-    	let a_href_value;
+    	let a2_href_value;
 
     	const block = {
     		c: function create() {
     			section = element("section");
     			p0 = element("p");
     			t0 = text("Posted by: ");
-    			span0 = element("span");
+    			a0 = element("a");
     			strong0 = element("strong");
     			t1 = text("u/");
     			t2 = text(t2_value);
     			t3 = space();
+    			a1 = element("a");
+    			t4 = text(t4_value);
+    			t5 = space();
     			p1 = element("p");
-    			t4 = text("Upvotes: ");
-    			span1 = element("span");
+    			t6 = text("Upvotes: ");
+    			span = element("span");
     			strong1 = element("strong");
-    			t5 = text(t5_value);
-    			t6 = space();
-    			h3 = element("h3");
     			t7 = text(t7_value);
     			t8 = space();
+    			h3 = element("h3");
+    			t9 = text(t9_value);
+    			t10 = space();
     			div = element("div");
-    			a = element("a");
+    			a2 = element("a");
     			img = element("img");
-    			add_location(strong0, file$1, 5, 22, 76);
-    			add_location(span0, file$1, 5, 16, 70);
-    			attr_dev(p0, "class", "svelte-1s9gj4k");
+    			add_location(strong0, file$1, 6, 71, 132);
+    			attr_dev(a0, "href", a0_href_value = `https://www.reddit.com/user/${/*data*/ ctx[0].author}/`);
+    			attr_dev(a0, "class", "svelte-1u1w686");
+    			add_location(a0, file$1, 6, 15, 76);
+    			attr_dev(a1, "class", "subreddit svelte-1u1w686");
+    			attr_dev(a1, "href", a1_href_value = `https://www.reddit.com/r/${/*data*/ ctx[0].subreddit}/`);
+    			add_location(a1, file$1, 7, 4, 175);
+    			attr_dev(p0, "class", "svelte-1u1w686");
     			add_location(p0, file$1, 5, 2, 56);
-    			add_location(strong1, file$1, 6, 20, 141);
-    			add_location(span1, file$1, 6, 14, 135);
-    			attr_dev(p1, "class", "svelte-1s9gj4k");
-    			add_location(p1, file$1, 6, 2, 123);
-    			attr_dev(h3, "class", "img-title svelte-1s9gj4k");
-    			add_location(h3, file$1, 7, 2, 183);
+    			add_location(strong1, file$1, 9, 20, 299);
+    			add_location(span, file$1, 9, 14, 293);
+    			attr_dev(p1, "class", "svelte-1u1w686");
+    			add_location(p1, file$1, 9, 2, 281);
+    			attr_dev(h3, "class", "img-title svelte-1u1w686");
+    			add_location(h3, file$1, 10, 2, 341);
     			add_location(section, file$1, 4, 0, 43);
     			if (img.src !== (img_src_value = /*data*/ ctx[0].url)) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "Meme");
-    			add_location(img, file$1, 11, 4, 297);
-    			attr_dev(a, "href", a_href_value = /*data*/ ctx[0].postLink);
-    			add_location(a, file$1, 10, 2, 267);
+    			add_location(img, file$1, 14, 4, 455);
+    			attr_dev(a2, "href", a2_href_value = /*data*/ ctx[0].postLink);
+    			attr_dev(a2, "class", "svelte-1u1w686");
+    			add_location(a2, file$1, 13, 2, 425);
     			attr_dev(div, "class", "img-container");
-    			add_location(div, file$1, 9, 0, 236);
+    			add_location(div, file$1, 12, 0, 394);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -542,42 +557,56 @@ var app = (function () {
     			insert_dev(target, section, anchor);
     			append_dev(section, p0);
     			append_dev(p0, t0);
-    			append_dev(p0, span0);
-    			append_dev(span0, strong0);
+    			append_dev(p0, a0);
+    			append_dev(a0, strong0);
     			append_dev(strong0, t1);
     			append_dev(strong0, t2);
-    			append_dev(section, t3);
+    			append_dev(p0, t3);
+    			append_dev(p0, a1);
+    			append_dev(a1, t4);
+    			append_dev(section, t5);
     			append_dev(section, p1);
-    			append_dev(p1, t4);
-    			append_dev(p1, span1);
-    			append_dev(span1, strong1);
-    			append_dev(strong1, t5);
-    			append_dev(section, t6);
+    			append_dev(p1, t6);
+    			append_dev(p1, span);
+    			append_dev(span, strong1);
+    			append_dev(strong1, t7);
+    			append_dev(section, t8);
     			append_dev(section, h3);
-    			append_dev(h3, t7);
-    			insert_dev(target, t8, anchor);
+    			append_dev(h3, t9);
+    			insert_dev(target, t10, anchor);
     			insert_dev(target, div, anchor);
-    			append_dev(div, a);
-    			append_dev(a, img);
+    			append_dev(div, a2);
+    			append_dev(a2, img);
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*data*/ 1 && t2_value !== (t2_value = /*data*/ ctx[0].author + "")) set_data_dev(t2, t2_value);
-    			if (dirty & /*data*/ 1 && t5_value !== (t5_value = /*data*/ ctx[0].ups + "")) set_data_dev(t5, t5_value);
-    			if (dirty & /*data*/ 1 && t7_value !== (t7_value = /*data*/ ctx[0].title + "")) set_data_dev(t7, t7_value);
+
+    			if (dirty & /*data*/ 1 && a0_href_value !== (a0_href_value = `https://www.reddit.com/user/${/*data*/ ctx[0].author}/`)) {
+    				attr_dev(a0, "href", a0_href_value);
+    			}
+
+    			if (dirty & /*data*/ 1 && t4_value !== (t4_value = /*data*/ ctx[0].subreddit + "")) set_data_dev(t4, t4_value);
+
+    			if (dirty & /*data*/ 1 && a1_href_value !== (a1_href_value = `https://www.reddit.com/r/${/*data*/ ctx[0].subreddit}/`)) {
+    				attr_dev(a1, "href", a1_href_value);
+    			}
+
+    			if (dirty & /*data*/ 1 && t7_value !== (t7_value = /*data*/ ctx[0].ups + "")) set_data_dev(t7, t7_value);
+    			if (dirty & /*data*/ 1 && t9_value !== (t9_value = /*data*/ ctx[0].title + "")) set_data_dev(t9, t9_value);
 
     			if (dirty & /*data*/ 1 && img.src !== (img_src_value = /*data*/ ctx[0].url)) {
     				attr_dev(img, "src", img_src_value);
     			}
 
-    			if (dirty & /*data*/ 1 && a_href_value !== (a_href_value = /*data*/ ctx[0].postLink)) {
-    				attr_dev(a, "href", a_href_value);
+    			if (dirty & /*data*/ 1 && a2_href_value !== (a2_href_value = /*data*/ ctx[0].postLink)) {
+    				attr_dev(a2, "href", a2_href_value);
     			}
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(section);
-    			if (detaching) detach_dev(t8);
+    			if (detaching) detach_dev(t10);
     			if (detaching) detach_dev(div);
     		}
     	};
@@ -654,7 +683,7 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file = "webviews\\components\\Sidebar.svelte";
 
-    // (72:2) {:catch}
+    // (73:2) {:catch}
     function create_catch_block(ctx) {
     	let p;
 
@@ -662,7 +691,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Something went wrong!";
-    			add_location(p, file, 72, 4, 2648);
+    			add_location(p, file, 73, 4, 2696);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -679,14 +708,14 @@ var app = (function () {
     		block,
     		id: create_catch_block.name,
     		type: "catch",
-    		source: "(72:2) {:catch}",
+    		source: "(73:2) {:catch}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (70:2) {:then data}
+    // (71:2) {:then data}
     function create_then_block(ctx) {
     	let memecontainer;
     	let current;
@@ -735,14 +764,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(70:2) {:then data}",
+    		source: "(71:2) {:then data}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (68:20)       <p>Getting you top quality Meme!</p>    {:then data}
+    // (69:20)       <p>Getting you top quality Meme!</p>    {:then data}
     function create_pending_block(ctx) {
     	let p;
 
@@ -750,7 +779,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Getting you top quality Meme!";
-    			add_location(p, file, 68, 4, 2513);
+    			add_location(p, file, 69, 4, 2561);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -767,7 +796,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(68:20)       <p>Getting you top quality Meme!</p>    {:then data}",
+    		source: "(69:20)       <p>Getting you top quality Meme!</p>    {:then data}",
     		ctx
     	});
 
@@ -819,17 +848,17 @@ var app = (function () {
     			footer = element("footer");
     			footer.textContent = "If you like the project please consider ⭐staring the repo!";
     			attr_dev(button0, "class", "btn previous-btn svelte-8ta0dk");
-    			add_location(button0, file, 75, 4, 2724);
+    			add_location(button0, file, 76, 4, 2772);
     			attr_dev(button1, "class", "btn next-btn svelte-8ta0dk");
-    			add_location(button1, file, 78, 4, 2826);
+    			add_location(button1, file, 79, 4, 2874);
     			attr_dev(div0, "class", "button-stack svelte-8ta0dk");
-    			add_location(div0, file, 74, 2, 2692);
+    			add_location(div0, file, 75, 2, 2740);
     			attr_dev(footer, "class", "svelte-8ta0dk");
-    			add_location(footer, file, 81, 4, 2977);
+    			add_location(footer, file, 82, 4, 3025);
     			attr_dev(a, "href", "https://github.com/version0chiro/VS-Meme-Reddit");
-    			add_location(a, file, 80, 2, 2913);
+    			add_location(a, file, 81, 2, 2961);
     			attr_dev(div1, "class", "container svelte-8ta0dk");
-    			add_location(div1, file, 66, 0, 2462);
+    			add_location(div1, file, 67, 0, 2510);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -945,12 +974,13 @@ var app = (function () {
     	let visitedMemes = [];
 
     	class Meme {
-    		constructor(url, title, author, ups, postLink) {
+    		constructor(url, title, author, ups, postLink, subreddit) {
     			this.url = url;
     			this.title = title;
     			this.author = author;
     			this.ups = ups;
     			this.postLink = postLink;
+    			this.subreddit = subreddit;
     		}
     	}
 
