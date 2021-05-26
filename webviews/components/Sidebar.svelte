@@ -1,16 +1,27 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import MemeContainer from "./MemeContainer.svelte";
 
-  let flag = false;
-  let visitedMemes: { url: string; title: string }[] = [];
-  let temp: Promise<string> = null;
+  let visitedMemes: { 
+    url: string;
+    title: string;
+    author: string;
+    ups: number;
+    postLink: string;
+  }[] = [];
   class Meme {
     url: string;
     title: string;
+    author: string;
+    ups: number;
+    postLink: string;
 
-    constructor(url: string, title: string) {
+    constructor(url: string, title: string, author: string, ups: number, postLink: string) {
       this.url = url;
       this.title = title;
+      this.author = author;
+      this.ups = ups;
+      this.postLink = postLink;
     }
   }
 
@@ -22,7 +33,13 @@
   }
 
   // two fns to set and get images from localstorage
-  const setImgInStore = (imgData: { url: string; title: string }[]) => {
+  const setImgInStore = (imgData: { 
+    url: string;
+    title: string,
+    author: string,
+    ups: number,
+    postLink: string
+  }[]) => {
     localStorage.setItem("prevImg", JSON.stringify(imgData));
   };
 
@@ -32,34 +49,17 @@
   };
 
   let apiClient = new MemeService();
-  const fetchImage = async () => {
-    const response = await fetch("https://meme-api.herokuapp.com/gimme");
-    return await response.json();
-  };
+  const fetchImage = apiClient.getMemes();
 
   const handleNextBtnClick = () => {
-    //1. grab existing image details into an object.
-    let imgElement = document.getElementsByTagName("img")[0];
-    let imgTitle = document.getElementsByClassName("img-title")[0];
-
-    let prevImg = { url: "", title: "" };
-    if (imgElement) {
-      prevImg.url = imgElement.src;
-    }
-    if (imgTitle) {
-      prevImg.title = imgTitle.innerText;
-    }
-
-    visitedMemes.push(prevImg);
+    visitedMemes.push(currentMeme);
     //2. save that object to the local storage.
     setImgInStore(visitedMemes);
 
     //3. get the next img
-    apiClient.getMemes().then((memes) => {
+    apiClient.getMemes().then((meme) => {
       console.log("next btn is clicked");
-      console.log(memes);
-      temp = memes;
-      flag = true;
+      currentMeme = meme;
     });
   };
 
@@ -72,41 +72,19 @@
 
     // get the first object from array...
     let prevImg = prevImgs.pop();
-
     // setback the local storage to modified array
     setImgInStore(prevImgs);
-
-    // grab the img and h3 tags
-    let imgElement = document.getElementsByTagName("img")[0];
-    let imgTitle = document.getElementsByClassName("img-title")[0];
-    if (imgElement) {
-      imgElement.src = prevImg.url;
-    }
-    if (imgTitle) {
-      imgTitle.innerText = prevImg.title;
-    }
+    currentMeme = prevImg
   };
   $: memeFetch = fetchImage;
+  $: currentMeme = null;
 </script>
 
 <div class="container">
-  {#await memeFetch()}
+  {#await memeFetch}
     <p>Getting you top quality Meme!</p>
   {:then data}
-    <p>Here it is!</p>
-    {#if flag}
-      <div class="img-container">
-        <a href={temp.url}>
-          <img src={temp.url} alt="Meme" />
-        </a>
-        <h3 class="img-title">{temp.title}</h3>
-      </div>
-    {:else}
-      <a href={data.url}>
-        <img src={data.url} alt="Meme" />
-      </a>
-      <h3>{data.title}</h3>
-    {/if}
+      <MemeContainer data={currentMeme ? currentMeme : data} />
   {:catch}
     <p>Something went wrong!</p>
   {/await}
@@ -152,15 +130,6 @@
     border-color: aquamarine;
     width: 200%;
     max-height: 75vh;
-  }
-  p {
-    margin: 10px;
-  }
-
-  h3 {
-    font-family: Gelasio;
-    margin: 10px;
-    text-align: center;
   }
   .button-stack {
     display: flex;
