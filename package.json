@@ -3,7 +3,7 @@
   "publisher": "sachinsinghroxx",
   "displayName": "reddit-memes",
   "description": "A VS-code extension for reddit memes",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "icon": "media/reddit.png",
   "repository": {
     "type": "git",
