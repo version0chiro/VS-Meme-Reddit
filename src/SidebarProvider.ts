@@ -5,7 +5,7 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
   _view?: vscode.WebviewView;
   _doc?: vscode.TextDocument;
 
-  constructor(private readonly _extensionUri: vscode.Uri) {}
+  constructor(private readonly _extensionUri: vscode.Uri) { }
 
   public resolveWebviewView(webviewView: vscode.WebviewView) {
     this._view = webviewView;
@@ -44,11 +44,8 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
   }
 
   private _getHtmlForWebview(webview: vscode.Webview) {
-    const styleResetUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "media", "reset.css")
-    );
     const styleVSCodeUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, "media", "vscode.css")
+      vscode.Uri.joinPath(this._extensionUri, "media", "global.css")
     );
 
     const scriptUri = webview.asWebviewUri(
@@ -71,7 +68,6 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
         -->
         <meta http-equiv="Content-Security-Policy" content=" img-src https: data:; style-src 'unsafe-inline' ${webview.cspSource}; script-src 'nonce-${nonce}';">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<link href="${styleResetUri}" rel="stylesheet">
 				<link href="${styleVSCodeUri}" rel="stylesheet">
         <link href="${styleMainUri}" rel="stylesheet">
         <script nonce="${nonce}">
