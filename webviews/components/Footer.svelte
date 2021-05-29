@@ -9,7 +9,7 @@
 <style>
     .foot-notes {
         position: absolute;
-        bottom: 3vh;
+        bottom: 1vh;
         width: 70%;
         padding: 5px;
         text-align: center;
