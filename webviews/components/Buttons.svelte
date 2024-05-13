@@ -14,9 +14,9 @@
 
 <div class="btn-stack">
     <button class="btn btn-prev prev-btn-disabled" on:click={onClickPrevious}
-        >&xlarr</button
+        >Back!</button
     >
-    <button class="btn btn-next" on:click={onClickNext}>&rarr</button>
+    <button class="btn btn-next" on:click={onClickNext}>Next!</button>
 </div>
 
 <style>

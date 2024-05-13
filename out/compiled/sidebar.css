@@ -1,7 +1,7 @@
-@font-face{font-family:"Gelasio";font-style:normal;font-weight:400;src:local("Gelasio Regular"), local("Gelasio-Regular"),
-      url(https://fonts.gstatic.com/s/gelasio/v1/cIf9MaFfvUQxTTqS9C6hYQ.woff2)
-        format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
-      U+2215, U+FEFF, U+FFFD}.container.svelte-i1w4j5{position:relative;height:100vh}footer.svelte-i1w4j5{position:absolute;bottom:10px;padding:var(--input-padding-vertical) var(--input-padding-horizontal);text-align:center;margin-top:10px;width:100%;border:3px solid #c15111}img.svelte-i1w4j5{border:1px solid;border-color:aquamarine;width:200%;max-height:80vh}p.svelte-i1w4j5{margin:10px}h3.svelte-i1w4j5{font-family:Gelasio;margin:10px;text-align:center}
+.app-title-bar.svelte-63vqpz{width:100%;position:absolute;top:1vh;text-align:center}p.svelte-63vqpz{margin:10px}a.svelte-63vqpz{text-decoration:none}.subreddit.svelte-63vqpz{background-color:var(--vscode-button-background);color:white;padding:0 0.5rem;border-radius:10px}
+.btn-stack.svelte-1egwmqn{bottom:12vh;display:flex;align-items:center;justify-content:center;width:80%;position:absolute}.btn.svelte-1egwmqn{border:none;padding:5px;min-width:65px;width:100%;margin:5px;text-align:center;background:var(--vscode-button-background);border-radius:15px;outline:none}.btn.svelte-1egwmqn:hover{background-color:orange}.btn.svelte-1egwmqn:focus{background-color:rgb(255, 106, 0)}.prev-btn-disabled.svelte-1egwmqn{background-color:gray}.prev-btn-disabled.svelte-1egwmqn:hover{background-color:gray}.prev-btn-disabled.svelte-1egwmqn:focus{background-color:gray}
+.foot-notes.svelte-vypg98{position:absolute;bottom:1vh;width:70%;padding:5px;text-align:center;border:3px solid #c15111}
+.img-container.svelte-9d3sng{height:50vh;width:100%;border:1px solid var(--vscode-button-background);background:var(--vscode-button-background);margin:auto;padding:2px 2px;border-radius:5px}.img-meme.svelte-9d3sng{height:50vh;width:100%}h3.svelte-9d3sng{font-family:Gelasio;margin:10px;text-align:center}
+main.svelte-1d6pcse{position:absolute;top:10vh;text-align:center;max-width:100%;padding:10px}
 
 /*# sourceMappingURL=sidebar.css.map */
