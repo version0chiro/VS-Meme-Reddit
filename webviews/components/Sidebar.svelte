@@ -45,7 +45,7 @@
     }
     loading = true;
     // call api and up on resolving the promise fill the data and reset the flag to load
-    await fetch("https://meme-api.herokuapp.com/gimme")
+    await fetch("https://meme-api.com/gimme")
       .then((res) => res.json())
       .then((imgDetails) => {
         imgData = imgDetails;
